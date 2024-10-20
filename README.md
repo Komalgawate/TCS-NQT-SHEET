@@ -1,1 +1,1 @@
-# TCS-NQT-SHEET
+# TCS-NQT-SHEET This repository contain basically Arrays,String,Numbers,and Sorting questions which difficulty level easy to medium i solved around 100 question related to array,string,numbers,and sorting.i followed this sheet->TCS NQT SHEET https://takeuforward.org/interviews/tcs-nqt-coding-sheet-tcs-coding-questions/
