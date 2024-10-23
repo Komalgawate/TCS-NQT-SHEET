@@ -216,13 +216,12 @@ public class stringque {
                     res+=String.valueOf(str[i].charAt(j)).toUpperCase();
                 }else
                     res+=String.valueOf(str[i].charAt(j)).toLowerCase();
-                
-                
+
               }
               res+=" ";
             }
             else res+=str[i].toLowerCase()+" ";
-            
+
         }
         return res.substring(0,res.length()-1);
     }
@@ -390,7 +389,7 @@ public class Stringque {
         int count[]=new int[26];
         for(int i=0;i<str.length();i++)
             count[str.charAt(i)-'a']++;
-        
+
         for(int i=0;i<26;i++){
             if(count[i]>1){
               System.out.println((char)(i+'a'));
@@ -433,7 +432,7 @@ public class Stringque {
     }
     public static String solve(String str){
         StringBuffer ans=new StringBuffer();
-        
+
         for(int i=0;i<str.length();i++){
             int ascii=(int)(str.charAt(i));
             if(ascii==90){
@@ -500,7 +499,131 @@ public class Stringque {
     }
 }
 // 24.Write a program to find a word in a given string which has the highest number of repeated letters.
+import java.util.*;
+class Solution {
+    static void HighestRepeatedLetters(String str) {
+        int len = str.length();
+        int maximumword = 0;
+        int curr_maximumword = 0;
+        String result = "";
+        for (int left = 0; left < len;) {
+        int right = left + 1;
+            while (right < len && str.charAt(right) != ' ') {
+                right++;
+            }
+            int frequency[] = new int[26];
+            curr_maximumword = 0;
+            for (int index = left; index < right; index++) {
+                frequency[str.charAt(index) - 'a']++;
+            }
+            for (int index = 0; index < 26; index++) {
+                if (frequency[index] > 1) {
+                    curr_maximumword++;
+                }
+            }
+            if (curr_maximumword > maximumword) {
+                maximumword = curr_maximumword;
+                result = "";
+                for (int j = left; j < right; j++)
+                    result += str.charAt(j);
+
+            }
+
+            left = right + 1;
+        }
+        if (result.equals("")) {
+            System.out.println("-1");
+        } else {
+
+            System.out.print("Word with highest number of repeated letters : ");
+            System.out.println(result);
+        }
+    }
+    public static void main(String args[]) {
+        String str = "abcdefg google microsoft";
+        HighestRepeatedLetters(str);
+    }
+}
+
 // 25.Change case of each character in a string
+public class Stringque {
+
+    public static void main(String[] args) {
+        String str="jaVA";
+        System.out.println(solve(str));
+    }
+    public static String solve(String str){
+        StringBuffer ans=new StringBuffer();
+        for(int i=0;i<str.length();i++){
+            int ascii=(int) str.charAt(i);
+            if(ascii>=65&&ascii<=90){
+              ans.append(Character.toLowerCase((char) ascii));
+            }
+            else if(ascii>=97&&ascii<=122){
+               ans.append(Character.toUpperCase((char) ascii));
+            }
+            else if(str.charAt(i)==' '){
+                ans.append(' ');
+            }
+        }
+        return ans.toString();
+    }
+}
 // 26.Concatenate one string to another
-// 27.Write a program to find a substring within a string. If found display its starting position
+public class Stringque {
+    public static void main(String[] args) {
+        String str1="komal";
+        String str2="gawate";
+        str1+=str2;
+         System.out.println(str1);
+    }
+}
+// 27.Write a program to find a substring within a string. If found display
+//its starting position
+//Input: str1 = "takeuforward" str2 = “forward” Output: 5
+public class Stringque {
+    public static void main(String[] args) {
+        String str1="takeuforward";
+        String str2="forward";
+        int foundidx=str1.indexOf(str2);
+        System.out.println(foundidx);
+    }
+}
 // 28. Reverse words in a string
+public class Stringque {
+
+    public static void main(String[] args) {
+        String str="i am komal gawate";
+        System.out.println(reverse(str));
+    }
+    public static String reverse(String str){
+        int left=0;
+        int right=str.length()-1;
+        String temp="";
+        String ans="";
+        while (left<=right) {
+            char ch=str.charAt(left);
+            if(ch!=' '){
+                temp+=ch;
+            }
+            if(ch==' '){
+                if(!ans.equals("")){
+                   ans=temp+" "+ans;
+                }
+                else{
+                    ans=temp;
+                }
+                temp="";
+            }
+            left++;
+        }
+        if(!temp.equals("")){
+            if(!ans.equals("")){
+                ans=temp+" "+ans;
+            }else{
+                ans=temp;
+            }
+        }
+        return ans;
+    }
+}
